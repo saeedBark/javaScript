@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exercice HTML</title>
+ 
+</head>
+<body style="margin-top:500;margin-left: 500px; width: 960px;">
+  <h1>Tester JavaScript</h1>
+  <table id="ta" style="margin-bottom: 20px;">
+    <tr>
+      <td id="base">Base de données</td>
+      <td id="prog" colspan="2">Programmation</td>
+    </tr> 
+    <tr>
+      <td id="my">Mysql</td>
+      <td id="al">Algo</td>
+      <td id="py" rowspan="2" >Python</td>
+    </tr>  
+    <tr>
+      <td id="or">Oracle</td>
+      <td id="c+">C++</td>
+    </tr>
+  </table>
+  <button onclick="changerCouleur()">Changer</button>
+  <button onclick="retour()">Retour</button>
+
+  <script>
+    function changerCouleur() {
+      document.getElementById("ta").style.border="2px solid black";
+      document.getElementById("base").style.backgroundColor = "blue";
+      document.getElementById("prog").style.backgroundColor = "blue";
+      document.getElementById("my").style.backgroundColor = "green";
+      document.getElementById("al").style.backgroundColor = "green";
+      document.getElementById("py").style.backgroundColor = "green";
+      document.getElementById("or").style.backgroundColor = "red";
+      document.getElementById("c+").style.backgroundColor = "red";
+    }
+
+    function retour() {
+      document.getElementById("ta").style.border="1px solid white";
+      document.getElementById("base").style.backgroundColor = "white";
+      document.getElementById("prog").style.backgroundColor = "white";
+      document.getElementById("my").style.backgroundColor = "white";
+      document.getElementById("al").style.backgroundColor = "white";
+      document.getElementById("py").style.backgroundColor = "white";
+      document.getElementById("or").style.backgroundColor = "white";
+      document.getElementById("c+").style.backgroundColor = "white";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<head>
+    <title>Crud Operation</title>
+   <!-- <link type="text/css" rel="stylesheet" href="/style.css">-->
+
+
+   <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="logo-apple"></ion-icon>
+                        </span>
+                        <span class="title">Brand Name</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/add-person">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Add New Prof</span>
+                    </a>
+                </li>
+
+               
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+
+                <div class="user">
+                    <img src="assets/imgs/customer01.jpg" alt="">
+                </div>
+            </div>
+
+            <!-- ======================= Cards ================== -->
+            <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">200</div>
+                        <div class="cardName">Total Users</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">80</div>
+                        <div class="cardName">Payments</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="cart-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">5200</div>
+                        <div class="cardName">Total Prices</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="users-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">$7,842</div>
+                        <div class="cardName">Earning</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="cash-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================ Order Details List ================= -->
+            <div class="details" >
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2>Recent Orders</h2>
+                        <a href="#" class="btn">View All</a>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Full name</th>
+                                <th>email</th>
+                                <th>Phone</th>
+                                <th>Nni</th>
+                                <th>Salary</th>
+                                <th>Department</th>
+                                <th >action</th>
+                                <th>edit</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <% data.forEach(user => { %>
+                            <r>
+                       <td> <%= user.id %></td>
+                        <td> <%= user.nom %></td>
+                         <td> <%= user.email %></td> 
+                        <td> <%= user.phone %></td>
+                        <td> <%= user.nni %></td>
+                        <td> <%= user.salary %></td>
+                        <td> <%= user.department %></td>
+                       <td> <form action="/delete-person" method="post">
+                            <input type="hidden" name="personId" value="<%= user.id %>">
+                            <button type="submit">Delete</button>
+                          </form></td>
+                          <td><button> <a href="/edit-person/<%= user.id %>">Edit</a></button></td>
+                            </tr>  <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ================= New Customers ================ -->
+              
+            </div>
+        </div>
+    </div>
+
+    <!-- =========== Scripts =========  -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+<!-- 
+<body> 
+
+   
+                <form action="/add-person" method="post">
+                    <div>
+                        <label for="nom">Full name</label>
+                        <input type="text" name="nom" id="nom">
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email">
+                    </div>
+                    <div>
+                        <label for="phone">Phone</label>
+                        <input type="number" name="phone" id="phone">
+                    </div>
+                    <div>
+                        <label for="nni">Nni</label>
+                        <input type="number" name="nni" id="nni">
+                    </div>
+                    <div>
+                        <label for="salary">Salary</label>
+                        <input type="number" name="salary" id="salary">
+                    </div>
+                    <div>
+                        <label for="department">Department</label>
+                        <input type="text" name="department" id="department">
+                    </div>
+
+                    <div class="form_action--button">
+                        <input type="submit" value="Submit">
+                        <input type="reset" value="Reset">
+                    </div>
+                </form>
+
+                <td>
+                    <table class="list" id="storeList">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Full name</th>
+                                <th>email</th>
+                                <th>Phone</th>
+                                <th>Nni</th>
+                                <th>Salary</th>
+                                <th>Department</th>
+                                <th >action</th>
+                                <th>edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% data.forEach(user => { %>
+                            <r>
+                       <td> <%= user.id %></td>
+                        <td> <%= user.nom %></td>
+                         <td> <%= user.email %></td> 
+                        <td> <%= user.phone %></td>
+                        <td> <%= user.nni %></td>
+                        <td> <%= user.salary %></td>
+                        <td> <%= user.department %></td>
+                       <td> <form action="/delete-person" method="post">
+                            <input type="hidden" name="personId" value="<%= user.id %>">
+                            <button type="submit">Delete</button>
+                          </form></td>
+                          <td><button> <a href="/edit-person/<%= user.id %>">Edit</a></button></td>
+                            </tr>  <% }); %>
+                        </tbody>
+                    </table>
+                </td>
+          
+    <script type="text/javascript" src="/script.js"></script>
+</body> -->
+</html>

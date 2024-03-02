@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+    <title>Crud Operation</title>
+    <link type="text/css" rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>
+                <form action="/add-person" method="post">
+                    <div>
+                        <label for="nom">nom</label>
+                        <input type="text" name="nom" id="nom">
+                    </div>
+                    <div>
+                        <label for="prenom">prenom Name</label>
+                        <input type="text" name="prenom" id="prenom">
+                    </div>
+                    <div>
+                        <label for="age">age</label>
+                        <input type="number" name="age" id="age">
+                    </div>
+                    <div>
+                        <label for="nni">nni</label>
+                        <input type="number" name="nni" id="nni">
+                    </div>
+
+                    <div class="form_action--button">
+                        <input type="submit" value="Submit">
+                        <input type="reset" value="Reset">
+                    </div>
+                </form>
+
+                <td>
+                    <table class="list" id="storeList">
+                        <thead>
+                            <tr>
+                                <th>id </th>
+                                <th>nom/prenom </th>
+                                <th>age</th>
+                                <th>nni</th>
+                                <th >action</th>
+                                <th>edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% data.forEach(user => { %>
+                            <tr>
+                       <td> <%= user.id %></td>
+                        <td> <%= user.nom %>/<%= user.prenom %></td> 
+                        <td> <%= user.age %></td>
+                        <td> <%= user.nni %></td>
+                       <td> <form action="/delete-person" method="post">
+                            <input type="hidden" name="personId" value="<%= user.id %>">
+                            <button type="submit">Delete</button>
+                          </form></td>
+                          <td><button> <a href="/edit-person/<%= user.id %>">Edit</a></button></td>
+                            </tr>  <% }); %>
+                        </tbody>
+                    </table>
+                </td>
+            </td>
+        </tr>
+    </table>
+    <script type="text/javascript" src="/script.js"></script>
+</body>
+</html>

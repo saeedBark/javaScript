@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+    <title>Crud Operation</title>
+    <link type="text/css" rel="stylesheet" href="/style.css">
+</head>
+
+<body><form action="/edit-person" method="post">
+    <input type="hidden" id="editPersonId" name="personId" value="<%= person.id %>">
+  
+    <div>
+        <label for="nom">nom</label>
+        <input type="text" value="<%= person.nom %>" name="nom" id="nom">
+    </div>
+    <div>
+        <label for="prenom">prenom Name</label>
+        <input type="text"  value="<%= person.prenom %>" name="prenom" id="prenom">
+    </div>
+    <div>
+        <label for="age">age</label>
+        <input type="number" value="<%= person.age %>"  name="age" id="age">
+    </div>
+    <div>
+        <label for="nni">nni</label>
+        <input type="number" value="<%= person.nni %>" name="nni" id="nni">
+    </div>
+
+    <div class="form_action--button">     <button type="submit">Add Person</button>
+
+        <input type="reset" value="Reset">
+    </div>
+</form>
+<script type="text/javascript" src="/script.js"></script>
+</body>
+</html>

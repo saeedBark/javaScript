@@ -17,6 +17,8 @@ exports.create = (req, res) => {
     nni: req.body.nni,
     salary: req.body.salary,
     department: req.body.department,
+    nbPres: req.body.nbPres,
+    nbAbs: req.body.nbAbs,
     // Personne: req.body.Personne || false
   });
 

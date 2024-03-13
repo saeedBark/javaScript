@@ -8,6 +8,8 @@ const Personne = function(person) {
   this.phone = person.phone;
   this.salary = person.salary;
   this.department = person.department;
+  this.nbPres = person.nbPres;
+  this.nbAbs = person.nbAbs;
 
 };
 
@@ -115,8 +117,8 @@ Personne.getUsersByName = (nom, result) => {
 
 Personne.updateById = (id, person, result) => {
   sql.query(
-    "UPDATE personne SET nom = ?, email = ?, nni = ?,phone = ?,salary = ?, department = ? WHERE id = ?",
-    [person.nom, person.email,person.nni, person.phone, person.salary,person.department, id],
+    "UPDATE personne SET nom = ?, email = ?, nni = ?,phone = ?,salary = ?, department = ?, nbPres = ?, nbAbs = ? WHERE id = ?",
+    [person.nom, person.email,person.nni, person.phone, person.salary,person.department, person.nbPres,person.nbAbs, id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);

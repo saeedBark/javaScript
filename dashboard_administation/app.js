@@ -31,7 +31,7 @@ app.get('/add-person', async (req, res) => {
 // New route for handling form submission
 app.post('/add-person', async (req, res) => {
     try {
-      const { nom,email, phone, nni,salary,department } = req.body;
+      const { nom,email, phone, nni,salary,department,nbPres,nbAbs } = req.body;
   
       // You can use axios or any other method to add the new person to your API
       // Example using axios:
@@ -41,7 +41,9 @@ app.post('/add-person', async (req, res) => {
         phone: parseInt(phone),
         nni: parseInt(nni),
         salary: parseInt(salary),
-        department: department
+        department: department,
+        nbPres: parseInt(nbPres),
+        nbAbs: parseInt(nbAbs),
       });
   
       // Redirect to the home page after adding the person
@@ -70,7 +72,7 @@ app.post('/add-person', async (req, res) => {
 // Route for handling form submission (editing a person)
 app.post('/edit-person', async (req, res) => {
   try {
-    const { personId, nom,email,phone, nni, salary,department } = req.body;
+    const { personId, nom,email,phone, nni, salary,department,nbPres,nbAbs } = req.body;
 
     // Make a PUT or PATCH request to update the person in your API
     await axios.put(`http://localhost:8080/api/personnes/${personId}`, {
@@ -79,7 +81,9 @@ app.post('/edit-person', async (req, res) => {
       phone: parseInt(phone),
       nni: parseInt(nni),
       salary: parseInt(salary),
-      department: department
+      department: department,
+      nbPres: parseInt(nbPres),
+      nbAbs: parseInt(nbAbs),
     });
 
     // Redirect to the home page after editing the person
@@ -133,7 +137,7 @@ const response =    axios.get('http://localhost:8080/api/personnes')
 // Route for handling form submission (editing a person)
 app.post('/edit-person', async (req, res) => {
   try {
-    const { personId, newName,newEmail, newPhone, newNni,newSalary,newDepartment } = req.body;
+    const { personId, newName,newEmail, newPhone, newNni,newSalary,newDepartment, NewNbPres, NewNbAbs } = req.body;
 
     // Make a PUT or PATCH request to update the person in your API
     await axios.put(`http://localhost:8080/api/personnes/${personId}`, {
@@ -142,7 +146,9 @@ app.post('/edit-person', async (req, res) => {
       phone: parseInt(newPhone),
       nni: parseInt(newNni),
       salary: parseInt(newSalary),
-      department: newDepartment
+      department: newDepartment,
+      nbPres: parseInt(NewNbPres),
+      nbAbs: parseInt(NewNbAbs),
     });
 
     // Redirect to the home page after editing the person

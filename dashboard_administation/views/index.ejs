@@ -64,7 +64,6 @@
                 <div class="search">
                     <label>
                         <input type="text" placeholder="Search here" id="searchInput">
-                        <button onclick="searchUsers()">Search</button>
 
                         <ion-icon name="search-outline"></ion-icon>
                     </label>
@@ -83,37 +82,37 @@
                         <div class="cardName">Total Users</div>
                     </div>
 
-                    <div class="iconBx">
-                        <ion-icon name="eye-outline"></ion-icon>
+                    <div class="iconBx">  
+                        <ion-icon name="person-outline"></ion-icon>
                     </div>
                 </div>
 
                 <div class="card">
                     <div>
-                        <div class="numbers">80</div>
-                        <div class="cardName">Payments</div>
+                        <div class="numbers">23%</div>
+                        <div class="cardName">Taux d'absenteisme</div>
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="cart-outline"></ion-icon>
+                        <ion-icon name="person-outline"></ion-icon>
                     </div>
                 </div>
 
                 <div class="card">
                     <div>
-                        <div class="numbers">5200</div>
-                        <div class="cardName">Total Prices</div>
+                        <div class="numbers">5200$</div>
+                        <div class="cardName">Salaire Moyen</div>
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="users-outline"></ion-icon>
+                        <ion-icon name="cash-outline"></ion-icon>
                     </div>
                 </div>
 
                 <div class="card">
                     <div>
-                        <div class="numbers">$7,842</div>
-                        <div class="cardName">Earning</div>
+                        <div class="numbers">2,245.354$</div>
+                        <div class="cardName">Total Salary</div>
                     </div>
 
                     <div class="iconBx">
@@ -127,7 +126,6 @@
                 <div class="recentOrders">
                     <div class="cardHeader">
                         <h2>Recent Orders</h2>
-                        <a href="#" class="btn">View All</a>
                     </div>
 
                     <table>
@@ -140,6 +138,8 @@
                                 <th>Nni</th>
                                 <th>Salary</th>
                                 <th>Department</th>
+                                <th>Nb Present</th>
+                                <th>Nb Absent</th>
                                 <th >action</th>
                                 <th>edit</th>
                             </tr>
@@ -155,6 +155,8 @@
                         <td> <%= user.nni %></td>
                         <td> <%= user.salary %></td>
                         <td> <%= user.department %></td>
+                        <td> <%= user.nbPres %></td>
+                        <td> <%= user.nbAbs %></td>
                        <td> <form action="/delete-person" method="post">
                             <input type="hidden" name="personId" value="<%= user.id %>">
                             <button type="submit">Delete</button>

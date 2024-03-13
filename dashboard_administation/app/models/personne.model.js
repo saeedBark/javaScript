@@ -75,15 +75,53 @@ Personne.getAllPersonne = result => {
   });
 };
 
+//////// get count users
+Personne.getTotalCount = result => {
+  sql.query("SELECT COUNT(*) AS totalUsers FROM personne", (err, res) => {
+    if (err) {
+      console.log("Error: ", err);
+      result(err, null);
+      return;
+    }
+
+    result(null, res[0].totalUsers);
+  });
+}
+///// search
+// Model function to get all users or filter by name
+Personne.getAll = result => {
+  sql.query("SELECT * FROM personnes", (err, res) => {
+    if (err) {
+      console.log("Error: ", err);
+      result(err, null);
+      return;
+    }
+
+    result(null, res);
+  });
+};
+
+Personne.getUsersByName = (nom, result) => {
+  sql.query("SELECT * FROM personnes WHERE nom LIKE ?", [`%${nom}%`], (err, res) => {
+    if (err) {
+      console.log("Error: ", err);
+      result(err, null);
+      return;
+    }
+
+    result(null, res);
+  });
+};
+
 Personne.updateById = (id, person, result) => {
   sql.query(
-    "UPDATE personne SET nom = ?, prenom = ?, age = ?,nni = ? WHERE id = ?",
-    [person.nom, person.email, person.phone, person.salary,person.department, id],
+    "UPDATE personne SET nom = ?, email = ?, nni = ?,phone = ?,salary = ?, department = ? WHERE id = ?",
+    [person.nom, person.email,person.nni, person.phone, person.salary,person.department, id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);
-        return;
+        return; 
       }
 
       if (res.affectedRows == 0) {

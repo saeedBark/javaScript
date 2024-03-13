@@ -4,7 +4,7 @@
     <link type="text/css" rel="stylesheet" href="/style.css">
 </head>
 
-<body><form action="/edit-person" method="put">
+<body><form action="/edit-person" method="post">
     <input type="hidden" id="editPersonId" name="personId" value="<%= person.id %>">
   
     <div>
@@ -12,7 +12,7 @@
         <input type="text" value="<%= person.nom %>" name="nom" id="nom">
     </div>
     <div>
-        <label for="email">Email</label>
+        <label for="email">Email</label>    
         <input type="text"  value="<%= person.email %>" name="email" id="email">
     </div>
     <div>
@@ -32,9 +32,8 @@
         <input type="text" value="<%= person.department %>" name="department" id="department">
     </div>
 
-    <div class="form_action--button">     <button type="submit">Add Person</button>
+    <div class="form_action--button">     <button type="submit">Edit Person</button>
 
-        <input type="reset" value="Reset">
     </div>
 </form>
 <script type="text/javascript" src="/script.js"></script>

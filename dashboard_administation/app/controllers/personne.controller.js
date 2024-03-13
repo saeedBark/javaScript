@@ -45,6 +45,51 @@ exports.findAll = (req, res) => {
   });
 };
 
+/////// get count users ////
+exports.getTotalUsers = (req, res) => {
+  Personne.getTotalCount((err, count) => {
+    if (err) {
+      res.status(500).send({
+        message: err.message || "Some error occurred while getting total users count."
+      });
+    } else {
+      res.send({ totalUsers: count });
+    }
+  });
+};
+
+////// search ////
+exports.getAllUsers = (req, res) => {
+  const { nom } = req.query;
+
+  if (nom) {
+    // If search query is provided, filter users by name
+    Personne.getUsersByName(nom, (err, data) => {
+      if (err) {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving users."
+        });
+      } else {
+        res.send(data);
+      }
+    });
+  } else {
+    // If no search query, get all users
+    Personne.getAll((err, data) => {
+      if (err) {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving users."
+        });
+      } else {
+        res.send(data);
+      }
+    });
+  }
+};
+
+
 // Find a single Personne by Id
 exports.findOne = (req, res) => {
   Personne.findById(req.params.id, (err, data) => {
@@ -132,3 +177,7 @@ exports.deleteAll = (req, res) => {
     else res.send({ message: `All Personnes were deleted successfully!` });
   });
 };
+
+exports.showPesrsonForm = (req,res) =>{
+  res.render('addNew');
+}

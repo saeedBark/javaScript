@@ -4,6 +4,8 @@ module.exports = app => {
   var router = require("express").Router();
 
   // Create a new Tutorial
+  router.get("/add-person", personne.showPesrsonForm);
+
   router.post("/add-person", personne.create);
 
   // Retrieve all Tutorials
@@ -25,4 +27,6 @@ module.exports = app => {
   router.delete("/", personne.deleteAll);
 
   app.use('/api/personnes', router);
+
+  app.get("/totalUsers", personne.getTotalUsers);
 };

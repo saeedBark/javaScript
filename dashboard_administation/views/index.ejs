@@ -37,7 +37,7 @@
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
-                        <span class="title">Add New Prof</span>
+                        <span class="title">Add New Enseignant</span>
                     </a>
                 </li>
 
@@ -63,7 +63,9 @@
 
                 <div class="search">
                     <label>
-                        <input type="text" placeholder="Search here">
+                        <input type="text" placeholder="Search here" id="searchInput">
+                        <button onclick="searchUsers()">Search</button>
+
                         <ion-icon name="search-outline"></ion-icon>
                     </label>
                 </div>
@@ -174,79 +176,21 @@
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script>
+        function searchUsers() {
+            const searchQuery = document.getElementById('searchInput').value;
+    
+            axios.get('/users', { params: { nom: searchQuery } })
+                .then(response => {
+                    // Handle the response and update the UI with search results
+                })
+                .catch(error => {
+                    console.error('Error searching users:', error);
+                    // Handle errors
+                });
+        }
+    </script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
-<!-- 
-<body> 
 
-   
-                <form action="/add-person" method="post">
-                    <div>
-                        <label for="nom">Full name</label>
-                        <input type="text" name="nom" id="nom">
-                    </div>
-                    <div>
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email">
-                    </div>
-                    <div>
-                        <label for="phone">Phone</label>
-                        <input type="number" name="phone" id="phone">
-                    </div>
-                    <div>
-                        <label for="nni">Nni</label>
-                        <input type="number" name="nni" id="nni">
-                    </div>
-                    <div>
-                        <label for="salary">Salary</label>
-                        <input type="number" name="salary" id="salary">
-                    </div>
-                    <div>
-                        <label for="department">Department</label>
-                        <input type="text" name="department" id="department">
-                    </div>
-
-                    <div class="form_action--button">
-                        <input type="submit" value="Submit">
-                        <input type="reset" value="Reset">
-                    </div>
-                </form>
-
-                <td>
-                    <table class="list" id="storeList">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Full name</th>
-                                <th>email</th>
-                                <th>Phone</th>
-                                <th>Nni</th>
-                                <th>Salary</th>
-                                <th>Department</th>
-                                <th >action</th>
-                                <th>edit</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% data.forEach(user => { %>
-                            <r>
-                       <td> <%= user.id %></td>
-                        <td> <%= user.nom %></td>
-                         <td> <%= user.email %></td> 
-                        <td> <%= user.phone %></td>
-                        <td> <%= user.nni %></td>
-                        <td> <%= user.salary %></td>
-                        <td> <%= user.department %></td>
-                       <td> <form action="/delete-person" method="post">
-                            <input type="hidden" name="personId" value="<%= user.id %>">
-                            <button type="submit">Delete</button>
-                          </form></td>
-                          <td><button> <a href="/edit-person/<%= user.id %>">Edit</a></button></td>
-                            </tr>  <% }); %>
-                        </tbody>
-                    </table>
-                </td>
-          
-    <script type="text/javascript" src="/script.js"></script>
-</body> -->
 </html>

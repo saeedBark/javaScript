@@ -18,6 +18,15 @@ app.get('/', async (req, res) => {
     console.error('Error fetching data from the API:', error.message);
     res.status(500).send('Internal Server Error');
   }
+}); 
+
+app.get('/add-person', async (req, res) => {
+  try {
+    res.render('addNew');
+  } catch (error) {
+    console.error('Error fetching data from the API:', error.message);
+    res.status(500).send('Internal Server Error');
+  }
 });
 // New route for handling form submission
 app.post('/add-person', async (req, res) => {
@@ -99,6 +108,28 @@ app.get('/edit-person/:id', async (req, res) => {
   }
 });
 
+app.get('/totalUsersCount', async (req, res) => {
+  try {
+
+const response =    axios.get('http://localhost:8080/api/personnes')
+    .then(response => {
+        document.getElementById('totalUsersCount').innerText = response.data.totalUsers;
+    })
+    .catch(error => {
+        console.error('Error fetching total users count:', error);
+        document.getElementById('totalUsersCount').innerText = 'Error';
+    });
+
+    const person = response.data;
+    console.log(res.data);
+
+    // Render the edit page with person details
+  } catch (error) {
+    console.error('Error fetching person details for edit:', error.message);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 // Route for handling form submission (editing a person)
 app.post('/edit-person', async (req, res) => {
   try {
@@ -107,11 +138,11 @@ app.post('/edit-person', async (req, res) => {
     // Make a PUT or PATCH request to update the person in your API
     await axios.put(`http://localhost:8080/api/personnes/${personId}`, {
       nom: newName,
+      email: newEmail,
       phone: parseInt(newPhone),
       nni: parseInt(newNni),
-      email: newEmail,
       salary: parseInt(newSalary),
-      department: parseInt(newDepartment)
+      department: newDepartment
     });
 
     // Redirect to the home page after editing the person

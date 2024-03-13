@@ -5,31 +5,31 @@
 </head>
 
 <body><form action="/add-person" method="post">
-    <input type="hidden" id="editPersonId" name="personId" value="<%= person.id %>">
+    <input type="hidden" id="editPersonId" name="personId">
   
     <div>
         <label for="nom">Full nom</label>
-        <input type="text" value="<%= person.nom %>" name="nom" id="nom">
+        <input type="text" name="nom" id="nom">
     </div>
     <div>
         <label for="email">Email</label>
-        <input type="text"  value="<%= person.email %>" name="email" id="email">
+        <input type="text"  name="email" id="email">
     </div>
     <div>
         <label for="phone">Phone</label>
-        <input type="number" value="<%= person.phone %>"  name="phone" id="phone">
+        <input type="number" name="phone" id="phone">
     </div>
     <div>
         <label for="nni">nni</label>
-        <input type="number" value="<%= person.nni %>" name="nni" id="nni">
+        <input type="number" name="nni" id="nni">
     </div>
     <div>
         <label for="salary">Salary</label>
-        <input type="number" value="<%= person.salary %>" name="salary" id="salary">
+        <input type="number" name="salary" id="salary">
     </div>
     <div>
         <label for="department">Department</label>
-        <input type="text" value="<%= person.department %>" name="department" id="department">
+        <input type="text"  name="department" id="department">
     </div>
 
     <div class="form_action--button">     <button type="submit">Add Person</button>
